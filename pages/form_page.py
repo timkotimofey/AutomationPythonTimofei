@@ -1,3 +1,4 @@
+import os
 import time
 
 from selenium.webdriver import Keys
@@ -21,6 +22,7 @@ class FormPage(BasePage):
         subject.send_keys(Keys.RETURN)
         self.element_is_visible(Locators.HOBBIES).click()
         self.element_is_visible(Locators.FILE_INPUT).send_keys(path)
+        os.remove(path)
         self.element_is_visible(Locators.CURRENT_ADDRESS).send_keys(person.current_address)
         self.element_is_visible(Locators.SUBMIT).click()
         return person   # это то, что мы будем сравнивать с результатом
